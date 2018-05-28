@@ -12,13 +12,10 @@ MongoClient.connect(url, function(err, client) {
   // Preparamos la base de datos
   const db = client.db(dbName);
   // Aquí dentro empezamos a trabajar con mongo
-  // Insert: Para inserter, si no dices el tipo el mira si es uno o varios.
   const collection = db.collection('todo');
   // Buscamos todo lo que hay con un filtro:
-  
   collection.find({ // Aquí pasamos los datos por los que queremos filtrar!
-      "done": false,
-      
+      "done": false, // En este caso tareas que no están hechas
   }).toArray(function(err, docs) {
       if(err) {
           console.log('Error buscando: ', err);
